@@ -1,0 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    camel_case_types: ignore
+    constant_pattern_never_matches_value_type: ignore
+    must_be_immutable: ignore
+    overridden_fields: ignore
+    slash_for_doc_comments: ignore
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
