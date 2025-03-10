@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:coremobile_core/bloc/core_action.dart';
-import 'package:coremobile_core/bloc/core_safe_cubit.dart';
-import 'package:coremobile_core/bloc/core_state.dart';
-import 'package:coremobile_core/config/logs_config.dart';
-import 'package:coremobile_core/model/core_message_resource.dart';
+import 'package:app_core/bloc/core_action.dart';
+import 'package:app_core/bloc/core_safe_cubit.dart';
+import 'package:app_core/bloc/core_state.dart';
+import 'package:app_core/config/logs_config.dart';
+import 'package:app_core/model/core_message_resource.dart';
 
 class CoreCubit<D> extends CoreSafeCubit<CoreState<D>> with LogsConfig {
   late List<StreamSubscription> disposeBag = List.empty(growable: true);

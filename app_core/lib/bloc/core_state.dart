@@ -1,6 +1,6 @@
+import 'package:app_core/bloc/core_action.dart';
+import 'package:app_core/model/core_message_resource.dart';
 import 'package:equatable/equatable.dart';
-import 'package:wismobile_core/bloc/wis_action.dart';
-import 'package:wismobile_core/model/wis_message_resource.dart';
 
 class CoreState<D> extends Equatable {
   final bool isLoading;
