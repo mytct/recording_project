@@ -11,6 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../data/repositories/audio_repository.dart' as _i996;
 import '../../features/audio_list/bloc/audio_list_cubit.dart' as _i279;
 import '../../features/record/bloc/record_cubit.dart' as _i622;
 import '../services/audio_play_service.dart' as _i1053;
@@ -31,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i279.AudioListCubit>(() => _i279.AudioListCubit());
     gh.factory<_i622.RecordCubit>(() => _i622.RecordCubit());
+    gh.factory<_i996.AudioRepositoryImpl>(() => _i996.AudioRepositoryImpl());
     gh.lazySingleton<_i979.LocalAudioService>(() => registerModule.recorder);
     gh.lazySingleton<_i1053.AudioPlayService>(() => registerModule.player);
     return this;

@@ -1,10 +1,16 @@
+import 'dart:ui';
+
 import 'package:audioplayers/audioplayers.dart';
 
 class AudioPlayService {
   final AudioPlayer _player = AudioPlayer();
 
-  Future<void> playAudio(String filePath) async {
+  Future<void> playAudio(String filePath,
+      {required VoidCallback finish}) async {
     await _player.play(DeviceFileSource(filePath));
+    _player.onPlayerComplete.listen((event) {
+      finish();
+    });
   }
 
   Future<void> pauseAudio() async {

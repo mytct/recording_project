@@ -24,16 +24,31 @@ class RecordViewState extends CoreViewState<RecordView> {
           RecordCubitAction>(
         actionListener: (context, state, action) {},
         builder: (context, state) {
+          final isRecording = state.data?.isRecording ?? false;
           return Container(
-            width: double.infinity,
-            height: 150,
-            color: Colors.blue,
-            alignment: Alignment.center,
-            child: const Text(
-              "Header Container",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          );
+              padding: const EdgeInsets.all(20),
+              width: double.infinity,
+              height: 150,
+              color: Colors.blue,
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Header Container",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      cubit.record();
+                    },
+                    child: Text(
+                      isRecording ? "Stop" : "Start",
+                      style: const TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
+                ],
+              ));
         },
       ),
     );
