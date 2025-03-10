@@ -25,3 +25,55 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Flutter/Dart related
+**/build/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+.idea/
+android/key.properties
+
+# Android related
+**/android/.gradle/
+**/android/app/*.iml
+**/android/local.properties
+**/android/app/google-services.json
+**/android/key.jks
+
+# iOS related
+**/ios/.generated/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Runner.xcworkspace/
+**/ios/Runner.iml
+
+# VS Code
+.vscode/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Xcode
+**/xcuserdata/
+**/DerivedData/
+**/ios/.dart_tool/
+
+# Logs & Generated files
+pubspec.lock
+*.log
+*.DS_Store
+
+# Firebase
+firebase_options.dart
