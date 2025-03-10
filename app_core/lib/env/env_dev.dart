@@ -1,4 +1,4 @@
-import 'package:wismobile_core/env/env_config.dart';
+import 'package:app_core/env/env_config.dart';
 
 class DevEnv extends CoreEnv {
   @override

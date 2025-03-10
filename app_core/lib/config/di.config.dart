@@ -31,12 +31,12 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioModule = _$DioModule();
-    gh.factory<_i547.DeviceConfig>(() => _i547.DeviceConfig());
-    gh.factory<_i175.DioConfig>(() => _i175.DioConfig());
-    gh.factory<_i352.FirebaseConfig>(() => _i352.FirebaseConfig());
-    gh.factory<_i566.RemoteConfig>(() => _i566.RemoteConfig());
-    gh.factory<_i47.UsecaseConfig>(() => _i47.UsecaseConfig());
     gh.factory<_i0.EnvConfig>(() => _i0.EnvConfig());
+    gh.factory<_i47.UsecaseConfig>(() => _i47.UsecaseConfig());
+    gh.factory<_i175.DioConfig>(() => _i175.DioConfig());
+    gh.factory<_i566.RemoteConfig>(() => _i566.RemoteConfig());
+    gh.factory<_i547.DeviceConfig>(() => _i547.DeviceConfig());
+    gh.factory<_i352.FirebaseConfig>(() => _i352.FirebaseConfig());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     return this;
   }

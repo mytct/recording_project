@@ -1,13 +1,13 @@
 import 'package:app_core/ui/core_stateful.dart';
 import 'package:flutter/material.dart';
 
-class RecordingListView extends CoreView {
-  const RecordingListView({super.key});
+class AudioListView extends CoreView {
+  const AudioListView({super.key});
   @override
-  State<RecordingListView> createState() => RecordingListViewState();
+  State<AudioListView> createState() => AudioListViewState();
 }
 
-class RecordingListViewState extends CoreViewState<RecordingListView> {
+class AudioListViewState extends CoreViewState<AudioListView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(

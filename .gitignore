@@ -78,3 +78,5 @@ pubspec.lock
 
 # Firebase
 firebase_options.dart
+
+*.g.*
