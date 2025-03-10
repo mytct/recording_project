@@ -32,14 +32,14 @@ class RecordViewState extends CoreViewState<RecordView> {
               padding: const EdgeInsets.all(20),
               width: double.infinity,
               height: 150,
-              color: Colors.blue,
+              color: Colors.grey,
               alignment: Alignment.center,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: 150,
-                    height: 100,
+                    width: 300,
+                    height: 20,
                     child: CustomPaint(
                       painter: WaveformPainter(decibels),
                     ),

@@ -24,6 +24,9 @@ class RecordCubit extends CoreCubit<RecordModelUI>
         final result = await recorder.startRecording((amplitude) {
           final List<double> moreDecibels = state.data?.decibels ?? [];
           moreDecibels.add(amplitude);
+          if (moreDecibels.length > 50) {
+            moreDecibels.removeAt(0); // Remove the oldest value
+          }
           emitUI(
             data: state.data?.copyWith(
               decibels: moreDecibels,

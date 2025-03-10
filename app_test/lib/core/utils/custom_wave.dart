@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class WaveformPainter extends CustomPainter {
-  final List<double> amplitudes;
+  final List<double> decibels;
 
-  WaveformPainter(this.amplitudes);
+  WaveformPainter(this.decibels);
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.white
-      ..strokeWidth = 2.0
-      ..strokeCap = StrokeCap.round;
+    final Paint paint = Paint()
+      ..shader = ui.Gradient.linear(
+        Offset(0, size.height / 2),
+        Offset(size.width, size.height / 2),
+        [Colors.yellowAccent, Colors.redAccent], // iOS-like gradient
+      )
+      ..strokeWidth = 2
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..isAntiAlias = true; // Smooth edges
 
-    double widthStep = size.width / (amplitudes.length + 1);
-    for (int i = 0; i < amplitudes.length; i++) {
-      double height = (amplitudes[i] + 60) * 1.5; // Normalize amplitude
-      canvas.drawLine(
-        Offset(i * widthStep, size.height / 2 - height / 2),
-        Offset(i * widthStep, size.height / 2 + height / 2),
-        paint,
-      );
+    final Path path = Path();
+    double midY = size.height / 2;
+
+    for (int i = 0; i < decibels.length; i++) {
+      double x = i * (size.width / decibels.length);
+      double normalizedHeight =
+          (decibels[i].abs() / 40) * size.height / 2; // Normalize decibels
+      double y = midY - normalizedHeight;
+
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
     }
+
+    canvas.drawPath(path, paint);
   }
 
   @override
