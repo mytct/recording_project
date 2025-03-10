@@ -21,9 +21,12 @@ class LocalAudioService with LogsConfig {
 
   bool isRecording = false;
   StreamSubscription? _recorderSubscription;
+  final StreamController<double> _waveformController =
+      StreamController<double>.broadcast();
 
   Future<void> init() async {
     await _recorder.openRecorder();
+    await _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
   }
 
   Future<String> saveToDownloads() async {
@@ -45,7 +48,7 @@ class LocalAudioService with LogsConfig {
     await FlutterBackground.enableBackgroundExecution();
   }
 
-  Future<bool> startRecording() async {
+  Future<bool> startRecording(Function(double) callback) async {
     if (!(await Permission.microphone.request().isGranted)) {
       openAppSettings();
       return false;
@@ -63,9 +66,14 @@ class LocalAudioService with LogsConfig {
 
     String filePath = await saveToDownloads();
 
-    _recorder.startRecorder(toFile: filePath);
+    _recorder.startRecorder(toFile: filePath, codec: Codec.aacADTS);
     isRecording = true;
-    _recorderSubscription = _recorder.onProgress!.listen((event) {});
+    _recorderSubscription = _recorder.onProgress?.listen((event) {
+      log('decibels', 'event= ${event.toString()}');
+      double amplitude = event.decibels ?? 0;
+      log('decibels', 'amplitude= ${amplitude}');
+      callback(amplitude);
+    });
     return true;
   }
 

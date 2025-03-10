@@ -2,6 +2,7 @@ import 'package:app_core/bloc/core_consumer.dart';
 import 'package:app_core/bloc/core_state.dart';
 import 'package:app_core/ui/core_stateful.dart';
 import 'package:app_test/core/di/di.dart';
+import 'package:app_test/core/utils/custom_wave.dart';
 import 'package:app_test/features/record/bloc/record_action.dart';
 import 'package:app_test/features/record/bloc/record_cubit.dart';
 import 'package:app_test/features/record/views/record_model_ui.dart';
@@ -25,6 +26,8 @@ class RecordViewState extends CoreViewState<RecordView> {
         actionListener: (context, state, action) {},
         builder: (context, state) {
           final isRecording = state.data?.isRecording ?? false;
+          final List<double> decibels = state.data?.decibels ?? [];
+          log('decibels', '${decibels}');
           return Container(
               padding: const EdgeInsets.all(20),
               width: double.infinity,
@@ -34,9 +37,12 @@ class RecordViewState extends CoreViewState<RecordView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Header Container",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  SizedBox(
+                    width: 150,
+                    height: 100,
+                    child: CustomPaint(
+                      painter: WaveformPainter(decibels),
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {

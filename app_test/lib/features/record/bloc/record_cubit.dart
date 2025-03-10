@@ -21,10 +21,18 @@ class RecordCubit extends CoreCubit<RecordModelUI>
   void record() async {
     try {
       if (!recorder.isRecording) {
-        final result = await recorder.startRecording();
+        final result = await recorder.startRecording((amplitude) {
+          final List<double> moreDecibels = state.data?.decibels ?? [];
+          moreDecibels.add(amplitude);
+          emitUI(
+            data: state.data?.copyWith(
+              decibels: moreDecibels,
+            ),
+          );
+        });
         if (!result) {
           emitUI(
-              data: state.data?.copyWith(isRecording: false),
+              data: state.data?.copyWith(isRecording: false, decibels: []),
               action: ToastAction.error(const CoreMessageErrorResource(
                   message: "something went wrong")));
           return;
@@ -37,12 +45,12 @@ class RecordCubit extends CoreCubit<RecordModelUI>
       }
       await recorder.stopRecording();
       emitUI(
-          data: state.data?.copyWith(isRecording: false),
+          data: state.data?.copyWith(isRecording: false, decibels: []),
           action: ToastAction.success(
               const CoreMessageErrorResource(message: "Record success")));
     } catch (ex) {
       emitUI(
-          data: state.data?.copyWith(isRecording: false),
+          data: state.data?.copyWith(isRecording: false, decibels: []),
           action: ToastAction.error(
               CoreMessageErrorResource(message: "error ${ex.toString()}")));
     }

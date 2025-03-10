@@ -41,9 +41,25 @@ class AudioListViewState extends CoreViewState<AudioListView> {
                           },
                           leading: const Icon(Icons.audio_file_rounded),
                           title: Text("${data[index].title}"),
-                          trailing: (indexPlaying == index)
-                              ? const Icon(Icons.pause_circle_outline_rounded)
-                              : const Icon(Icons.play_circle_outline_rounded),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 8),
+                                child: Icon(
+                                  Icons.upload_file_outlined,
+                                  color: (!data[index].isSynced)
+                                      ? Colors.black
+                                      : Colors.blue,
+                                ),
+                              ),
+                              (indexPlaying == index)
+                                  ? const Icon(
+                                      Icons.pause_circle_outline_rounded)
+                                  : const Icon(
+                                      Icons.play_circle_outline_rounded),
+                            ],
+                          ),
                         );
                       },
                     )
@@ -52,7 +68,7 @@ class AudioListViewState extends CoreViewState<AudioListView> {
                         physics: AlwaysScrollableScrollPhysics(),
                         child: Center(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 100),
+                            padding: EdgeInsets.only(top: 150),
                             child: Text('Empty'),
                           ),
                         ),
