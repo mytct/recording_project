@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:app_core/config/logs_config.dart';
 
-abstract class CoreStateful extends StatefulWidget {
-  const CoreStateful({super.key});
+abstract class CoreView extends StatefulWidget {
+  const CoreView({super.key});
 }
 
-abstract class CoreStatefulState<T extends CoreStateful> extends State<T>
+abstract class CoreViewState<T extends CoreView> extends State<T>
     with LogsConfig {
   @override
   void initState() {

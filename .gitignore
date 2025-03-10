@@ -37,6 +37,7 @@ doc/api/
 .pub/
 .idea/
 android/key.properties
+**/android/app/.cxx/
 
 # Android related
 **/android/.gradle/

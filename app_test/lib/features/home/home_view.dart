@@ -1,4 +1,5 @@
 import 'package:app_core/ui/core_stateless.dart';
+import 'package:app_test/features/recording/recording_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
@@ -9,17 +10,7 @@ class HomeView extends CoreStateless {
     return Column(
       children: [
         // Top Container
-        Container(
-          width: double.infinity,
-          height: 150,
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text(
-            "Header Container",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        ),
-
+        RecordingView(),
         // ListView inside Expanded to take the remaining space
         Expanded(
           child: ListView.builder(
