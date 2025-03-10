@@ -6,10 +6,10 @@ import 'package:app_core/ui/core_stateful.dart';
 class SafeAreaWidget extends CoreStateful {
   const SafeAreaWidget({
     super.key,
-    required this.data,
+    required this.childView,
   });
 
-  final String data;
+  final Widget? childView;
 
   @override
   State<SafeAreaWidget> createState() => SafeAreaWidgetState();
@@ -18,11 +18,7 @@ class SafeAreaWidget extends CoreStateful {
 class SafeAreaWidgetState extends CoreStatefulState<SafeAreaWidget> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text(widget.data),
-      ),
-    );
+    return SafeArea(child: widget.childView ?? const SizedBox());
   }
 
   @override
