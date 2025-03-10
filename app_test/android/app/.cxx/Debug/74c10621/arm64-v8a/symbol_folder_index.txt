@@ -1,1 +1,0 @@
-/home/mytran/Documents/recording_project/app_test/build/app/intermediates/cxx/Debug/74c10621/obj/arm64-v8a

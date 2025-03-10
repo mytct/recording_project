@@ -1,2 +1,0 @@
-/home/mytran/Documents/recording_project/app_test/android/app/.cxx/Debug/74c10621/armeabi-v7a/CMakeFiles/edit_cache.dir
-/home/mytran/Documents/recording_project/app_test/android/app/.cxx/Debug/74c10621/armeabi-v7a/CMakeFiles/rebuild_cache.dir

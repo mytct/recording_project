@@ -18,7 +18,13 @@ class SafeAreaWidget extends CoreStateful {
 class SafeAreaWidgetState extends CoreStatefulState<SafeAreaWidget> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: widget.childView ?? const SizedBox());
+    return SafeArea(
+        child: (widget.childView != null)
+            ? Container(
+                child: widget.childView,
+                color: Colors.white,
+              )
+            : const SizedBox());
   }
 
   @override
